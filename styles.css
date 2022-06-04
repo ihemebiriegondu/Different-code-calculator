@@ -1,0 +1,19 @@
+form {
+    width: 20rem;
+    height: 30rem;
+    display: grid;
+    margin: auto;
+    margin-top: 8rem;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+}
+
+#display{
+    grid-column: 1/5;
+    height: 10rem;
+}
+
+form input:nth-of-type(17) {
+    grid-column: 4/5;
+    grid-row: 4/6;
+}
