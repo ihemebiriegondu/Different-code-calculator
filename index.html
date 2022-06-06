@@ -1,4 +1,5 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +8,7 @@
 
     <link rel="stylesheet" href="./styles.css">
 </head>
+
 <body>
     <header>
 
@@ -15,29 +17,33 @@
         <form>
             <div id="display">
                 <div id="prev-display">0</div>
-                <div id="current-display">0</div>
+                <div id="current-display"></div>
             </div>
-            <input type="button" id="all-clear" value="AC" onclick="clearAll()">
-            <input type="button" class="buttons decimal" value=".">
-            <input type="button" id="delete" value="DEL">
-            <input type="button" class="buttons" value="9">
-            <input type="button" class="buttons" value="8">
-            <input type="button" class="buttons" value="7">
-            <input type="button" class="operator" id="multiply" value="x">
-            <input type="button" class="buttons" value="6">
-            <input type="button" class="buttons" value="5">
-            <input type="button" class="buttons" value="4">
-            <input type="button" class="buttons" value="3">
-            <input type="button" class="buttons" value="2">
-            <input type="button" class="buttons" value="1">
-            <input type="button" class="buttons" value="0"> 
-            <input type="button" class="operator" id="add" value="+">
-            <input type="button" class="operator" id="divide" value="÷">
-            <input type="button" class="operator" id="subtract" value="-">
-            <input type="button" id="equal-to" value="=">
+            <div id="keyboard">
+                <input type="button" id="all-clear" value="AC" onclick="clearAll()">
+                <input type="button" class="operator" id="multiply" value="x">
+                <input type="button" class="operator" id="divide" value="÷">
+                <input type="button" id="delete" value="DEL">
+                <input type="button" class="buttons" value="9">
+                <input type="button" class="buttons" value="8">
+                <input type="button" class="buttons" value="7">
+                <input type="button" class="operator" id="add" value="+">
+                <input type="button" class="buttons" value="6">
+                <input type="button" class="buttons" value="5">
+                <input type="button" class="buttons" value="4">
+                <input type="button" class="operator" id="subtract" value="-">
+                <input type="button" class="buttons" value="3">
+                <input type="button" class="buttons" value="2">
+                <input type="button" class="buttons" value="1">
+                <input type="button" class="buttons" value="0">
+                <input type="button" class="buttons" value="00">
+                <input type="button" class="decimal" value=".">
+                <input type="button" id="equal-to" value="=">
+            </div>
         </form>
     </main>
 
     <script src="./app.js"></script>
 </body>
+
 </html>

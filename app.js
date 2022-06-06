@@ -30,12 +30,29 @@ buttons.forEach(button => {
     button.addEventListener("click", displayButtons);
 });
 
+//decimal point
+
+let decimalPointFunction = () => {
+    let prevDisplayedValue = prevDisplay.innerHTML;
+    currentDisplayedValue = currentDisplay.innerHTML;
+
+    if (prevDisplayedValue === "0" || currentDisplayedValue === "") {
+        allClear.value = "CE";
+        prevDisplay.innerHTML = prevDisplayedValue + ".";
+    } else {
+        prevDisplayedValue = currentDisplay.innerHTML;
+        prevDisplay.innerHTML = prevDisplayedValue + ".";
+    }
+}
+decimalPoint.addEventListener("click", decimalPointFunction);
+
 
 //using operations to get answer
 operators.forEach(operator => {
 
     let operatorButtons = () => {
         let prevDisplayedValue = prevDisplay.innerHTML;
+        let currentDisplayedValue = currentDisplay.innerHTML;
         let operatorValue = operator.value;
 
         if (prevDisplayedValue === "0") {
@@ -43,48 +60,49 @@ operators.forEach(operator => {
         }
 
         if (operatorValue === divide) {
-            prevDisplay.innerHTML = prevDisplayedValue + "/";
+            if (currentDisplayedValue === "0" || currentDisplayedValue === "") {
+                prevDisplay.innerHTML = prevDisplayedValue + "/";
+            } else {
+                prevDisplayedValue = currentDisplay.innerHTML;
+                prevDisplay.innerHTML = prevDisplayedValue + "/";
+            } 
             return;
         }
 
         if (operatorValue === multiply) {
-            prevDisplay.innerHTML = prevDisplayedValue + "*";
-            return
+            if (currentDisplayedValue === "0" || currentDisplayedValue === "") {
+                prevDisplay.innerHTML = prevDisplayedValue + "*";
+            } else {
+                prevDisplayedValue = currentDisplay.innerHTML;
+                prevDisplay.innerHTML = prevDisplayedValue + "*";
+            } 
+            return;
         }
 
         if (operatorValue === add) {
-            prevDisplay.innerHTML = prevDisplayedValue + "+"
-            return
+            if (currentDisplayedValue === "0" || currentDisplayedValue === "") {
+                prevDisplay.innerHTML = prevDisplayedValue + "+";
+            } else {
+                prevDisplayedValue = currentDisplay.innerHTML;
+                prevDisplay.innerHTML = prevDisplayedValue + "+";
+            } 
+            return;
         }
 
         if (operatorValue === subtract) {
-            prevDisplay.innerHTML = prevDisplayedValue + "-"
-            return
+            if (currentDisplayedValue === "0" || currentDisplayedValue === "") {
+                prevDisplay.innerHTML = prevDisplayedValue + "-";
+            } else {
+                prevDisplayedValue = currentDisplay.innerHTML;
+                prevDisplay.innerHTML = prevDisplayedValue + "-";
+            } 
+            return;
         }
     }
 
     operator.addEventListener("click", operatorButtons)
 });
 
-// using operations to get answer
-/*operators.forEach(operator => {
-
-    let operatorButtons = () => {
-        if (operator.value == "+") {
-            console.log("+");
-        } else if (operator.value == "-") {
-            console.log("-")
-        } else if (operator.value == "x") {
-            console.log("*")
-        } else if (operator.value == "÷") {
-            console.log("/")
-        } else if (operator.value == "%") {
-            console.log("percent")
-        }
-    }
-    operator.addEventListener("click", operatorButtons)
-
-});*/
 
 //equals answer
 
@@ -96,7 +114,7 @@ let equalToFunction = () => {
         }
         catch (err) {
             currentDisplay.textContent = "Syntax ERROR!";
-            prevDisplay.textContent = "0";
+            prevDisplay.textContent = "";
         }
     }
 }
