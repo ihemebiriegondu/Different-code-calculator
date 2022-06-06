@@ -1,51 +1,70 @@
 const buttons = document.querySelectorAll(".buttons");
 const decimalPoint = document.querySelector(".decimal");
 const display = document.getElementById("display");
+const currentDisplay = document.getElementById("current-display");
+const prevDisplay = document.getElementById("prev-display");
 const operators = document.querySelectorAll(".operator");
 const allClear = document.getElementById("all-clear");
 const deletePrev = document.getElementById("delete");
 const equalsTo = document.getElementById("equal-to");
+const add = document.getElementById("add").value;
+const subtract = document.getElementById("subtract").value;
+const multiply = document.getElementById("multiply").value;
+const divide = document.getElementById("divide").value;
 
 // displaying button values
 buttons.forEach(button => {
 
     let displayButtons = () => {
 
-        let displayedValue = display.value;
+        let prevDisplayedValue = prevDisplay.innerHTML;
         let buttonValue = button.value;
 
-        if (displayedValue === "0") {
-            display.value = buttonValue;
+        if (prevDisplayedValue === "0") {
+            allClear.value = "CE";
+            prevDisplay.innerHTML = buttonValue;
         } else {
-            display.value = displayedValue + buttonValue;
+            prevDisplay.innerHTML = prevDisplayedValue + buttonValue;
         }
-
     }
     button.addEventListener("click", displayButtons);
 });
 
+
 //using operations to get answer
 operators.forEach(operator => {
-    
+
     let operatorButtons = () => {
-        let displayedValue = display.value;
+        let prevDisplayedValue = prevDisplay.innerHTML;
         let operatorValue = operator.value;
 
-        if (displayedValue === "0") {
-            display.value = "0";
-        } else if (operator.value = "÷") {
-            operatorValue = "/";
-            display.value = displayedValue + operatorValue;
-        } else if (operator.value = "x") {
-            operatorValue = "*";
-            display.value = displayedValue + operatorValue;
+        if (prevDisplayedValue === "0") {
+            prevDisplay.innerHTML = buttonValue;
+        }
+
+        if (operatorValue === divide) {
+            prevDisplay.innerHTML = prevDisplayedValue + "/";
+            return;
+        }
+
+        if (operatorValue === multiply) {
+            prevDisplay.innerHTML = prevDisplayedValue + "*";
+            return
+        }
+
+        if (operatorValue === add) {
+            prevDisplay.innerHTML = prevDisplayedValue + "+"
+            return
+        }
+
+        if (operatorValue === subtract) {
+            prevDisplay.innerHTML = prevDisplayedValue + "-"
+            return
         }
     }
+
     operator.addEventListener("click", operatorButtons)
 });
-
-
-
 
 // using operations to get answer
 /*operators.forEach(operator => {
@@ -70,9 +89,15 @@ operators.forEach(operator => {
 //equals answer
 
 let equalToFunction = () => {
-    let answer = display.value;
+    let answer = prevDisplay.innerHTML;
     if (answer) {
-        display.value = eval(answer);
+        try {
+            currentDisplay.innerHTML = eval(answer);
+        }
+        catch (err) {
+            currentDisplay.textContent = "Syntax ERROR!";
+            prevDisplay.textContent = "0";
+        }
     }
 }
 equalsTo.addEventListener("click", equalToFunction);
@@ -81,14 +106,16 @@ equalsTo.addEventListener("click", equalToFunction);
 //deleting values   this is where i am currently
 
 let deletePrevItem = () => {
-    let deletableDisplayedValue = display.value;
-    display.value = deletableDisplayedValue.substring(0, deletableDisplayedValue.length - 1);
+    let deletableDisplayedValue = prevDisplay.innerHTML;
+    prevDisplay.innerHTML = deletableDisplayedValue.substring(0, deletableDisplayedValue.length - 1);
 }
 
 deletePrev.addEventListener("click", deletePrevItem)
 
 // clearing inputs
 let clearAll = () => {
-    display.value = "0";
+    allClear.value = "AC";
+    currentDisplay.textContent = "";
+    prevDisplay.textContent = "0";
 }
 

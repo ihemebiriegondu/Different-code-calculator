@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Basic Calcu;ator</title>
+    <title>Basic Calculator</title>
 
     <link rel="stylesheet" href="./styles.css">
 </head>
@@ -13,15 +13,17 @@
     </header>
     <main>
         <form>
-            <input type="text" value="0" id="display" disabled>
-            <input type="button" id="all-clear" value="CE" onclick="clearAll()">
-            <input type="button" class="operator" value="%">
-            <input type="button" class=" buttons decimal" value=".">
+            <div id="display">
+                <div id="prev-display">0</div>
+                <div id="current-display">0</div>
+            </div>
+            <input type="button" id="all-clear" value="AC" onclick="clearAll()">
+            <input type="button" class="buttons decimal" value=".">
             <input type="button" id="delete" value="DEL">
             <input type="button" class="buttons" value="9">
             <input type="button" class="buttons" value="8">
             <input type="button" class="buttons" value="7">
-            <input type="button" class="operator" value="x">
+            <input type="button" class="operator" id="multiply" value="x">
             <input type="button" class="buttons" value="6">
             <input type="button" class="buttons" value="5">
             <input type="button" class="buttons" value="4">
@@ -29,9 +31,9 @@
             <input type="button" class="buttons" value="2">
             <input type="button" class="buttons" value="1">
             <input type="button" class="buttons" value="0"> 
-            <input type="button" class="operator" value="+">
-            <input type="button" class="operator" value="÷">
-            <input type="button" class="operator" value="-">
+            <input type="button" class="operator" id="add" value="+">
+            <input type="button" class="operator" id="divide" value="÷">
+            <input type="button" class="operator" id="subtract" value="-">
             <input type="button" id="equal-to" value="=">
         </form>
     </main>
